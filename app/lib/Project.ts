@@ -2,7 +2,11 @@ import { reconstructProjectData } from "../utils/apiResponse";
 
 const { CMS_URL } = process.env;
 export async function getDataProject() {
-  const res = await fetch(`${CMS_URL}/api/projects?populate=*`);
+  const res = await fetch(`${CMS_URL}/api/projects?populate=*`, {
+    next: {
+      revalidate: 0,
+    },
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

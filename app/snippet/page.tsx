@@ -5,7 +5,11 @@ import { reconstructSnippetData } from "../utils/apiResponse";
 
 const { CMS_URL } = process.env;
 async function getData() {
-  const res = await fetch(`${CMS_URL}/api/snippets?populate=*`);
+  const res = await fetch(`${CMS_URL}/api/snippets?populate=*`, {
+    next: {
+      revalidate: 0,
+    },
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

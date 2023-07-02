@@ -6,7 +6,11 @@ import { reconstructWorkData } from "@/app/utils/apiResponse";
 
 const { CMS_URL } = process.env;
 async function getData() {
-  const res = await fetch(`${CMS_URL}/api/works?sort=id:DESC&populate=*`);
+  const res = await fetch(`${CMS_URL}/api/works?sort=id:DESC&populate=*`, {
+    next: {
+      revalidate: 0,
+    },
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
