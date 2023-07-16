@@ -29,6 +29,8 @@ export default function Intro() {
     }
   }, []);
 
+  const { CV_URL } = process.env;
+
   return (
     <>
       <motion.div
@@ -75,6 +77,25 @@ export default function Intro() {
             text="Have 5 years experiences as Software Engineer, 1 year Backend, 4 years Frontend, and proficient in React, Next, React Native and Flutter."
             customClass="flex-wrap w-full lg:w-3/4"
           />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1 }}
+        >
+          <motion.a
+            href={CV_URL}
+            target="__blank"
+            whileHover={{ scale: 1.1, borderRadius: 8, opacity: "80%" }}
+            transition={{ duration: 0.2 }}
+            animate={{
+              y: [0, -3, 0],
+              transition: { repeat: Infinity, duration: 1.5 },
+            }}
+            className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold py-2 lg:py-3 px-3 lg:px-6 rounded shadow-md text-xs lg:text-sm"
+          >
+            Download CV / Resume
+          </motion.a>
         </motion.div>
         <motion.svg className="lg:w-[140px] lg:h-[80px]">
           <motion.path

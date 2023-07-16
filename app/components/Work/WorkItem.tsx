@@ -98,7 +98,7 @@ export default function WorkItem({
               }}
               className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold py-2 lg:py-3 px-3 lg:px-6 rounded shadow-md text-[10px] lg:text-sm"
             >
-              {isExpanded ? "Show Less" : "Show Responsibility"}
+              Responsibility
               {isExpanded ? (
                 <motion.span
                   initial={{ rotate: 0 }}
