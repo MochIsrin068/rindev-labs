@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import SnippetItem from "./SnippetItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CopyBlock, atomOneDark } from "react-code-blocks";
 
 type TPropsWrapperAnimatePresence = {
@@ -14,15 +14,45 @@ export default function WrapperAnimatePresence({
 }: TPropsWrapperAnimatePresence) {
   const [selectedItem, setSelectedItem] = useState<any>(null);
 
+  const handleScrollWhenHaveModal = () => {
+    const browserWindow = window;
+
+    const scrollTop =
+      browserWindow.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft =
+      browserWindow.pageXOffset || document.documentElement.scrollLeft;
+
+    browserWindow.scrollTo(0, 0);
+
+    setTimeout(() => {
+      browserWindow.onscroll = function () {
+        // browserWindow.scrollTo(scrollLeft, scrollTop);
+        browserWindow.scrollTo(0, 0);
+      };
+    }, 700);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (selectedItem) {
+        handleScrollWhenHaveModal();
+      } else {
+        window.onscroll = null;
+      }
+    }
+  }, [selectedItem]);
+
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-1">
         {snippets.map((item: any) => (
-          <SnippetItem
-            data={item}
-            setSelectedItem={setSelectedItem}
-            key={item.id}
-          />
+          <div key={item.id}>
+            <SnippetItem data={item} setSelectedItem={setSelectedItem} />
+          </div>
         ))}
         <AnimatePresence>
           {selectedItem && (
