@@ -8,11 +8,10 @@ export default async function Home() {
   return (
     <>
       <Intro />
-
       <Work />
       <ProjectComponent />
       <BlogComponent />
-      {/* <ContactComponent /> */}
+      <ContactComponent />
     </>
   );
 }

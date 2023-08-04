@@ -1,13 +1,10 @@
 import ProjectItem from "../components/Project/ProjectItem";
 import SectioHeader from "../components/SectionHeader";
 import DividerWave from "../components/DividerWave";
-import { getDataProject } from "../lib/Project";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
 export default async function Project() {
-  // const projects = await getDataProject();
-
   const supabase = createServerComponentClient({ cookies });
   const { data: projects }: any = await supabase
     .from("project")

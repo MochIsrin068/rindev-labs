@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={spaceGrotesk.className} suppressHydrationWarning={true}>
         <ProgressBar />
-        <main className="flex flex-col min-h-screen items-center">
+        <main className="flex flex-col min-h-screen items-center justify-between">
           <Header />
           <div className="px-4 lg:px-0 md:w-3/4 lg:w-3/5">{children}</div>
           <Footer />
