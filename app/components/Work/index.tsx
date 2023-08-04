@@ -1,25 +1,17 @@
 import WorkItem from "./WorkItem";
 import SectioHeader from "../SectionHeader";
 import DividerWave from "../DividerWave";
-import { dateToMonthYear } from "@/app/utils/date";
-import { reconstructWorkData } from "@/app/utils/apiResponse";
 
-const { CMS_URL } = process.env;
-async function getData() {
-  const res = await fetch(`${CMS_URL}/api/works?sort=id:DESC&populate=*`, {
-    next: {
-      revalidate: 0,
-    },
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  const dataJson = await res.json();
-  return reconstructWorkData(dataJson.data);
-}
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 export default async function Work() {
-  const works = await getData();
+  const supabase = createServerComponentClient({ cookies });
+  const { data: works }: any = await supabase
+    .from("work")
+    .select("*, responsibilities:responsibilities(*)")
+    .order("id", { ascending: false });
+
   return (
     <>
       <div className="mb-10 lg:mb-40" id="work">
@@ -34,16 +26,16 @@ export default async function Work() {
           {works &&
             works?.map((item: any) => (
               <WorkItem
+                id={item?.id}
                 key={item?.id}
-                company={item?.company}
+                company={{
+                  name: item?.company_name,
+                  picture: item?.company_picture,
+                }}
                 description={item?.description}
-                responsibilities={item?.responsibilities}
                 position={item?.position}
-                workDate={`${dateToMonthYear(`${item?.startDate}`)} - ${
-                  item?.isPresent
-                    ? "Present"
-                    : dateToMonthYear(`${item?.finishDate}`)
-                }`}
+                workDate={item?.work_date}
+                responsibilities={item?.responsibilities}
               />
             ))}
         </div>

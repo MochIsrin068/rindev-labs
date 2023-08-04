@@ -4,8 +4,18 @@ import DividerWave from "../DividerWave";
 import ButtonText from "../ButtonText";
 import { getDataProject } from "@/app/lib/Project";
 
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+
 export default async function ProjectComponent() {
-  const projects = await getDataProject();
+  // const projects = await getDataProject();
+
+  const supabase = createServerComponentClient({ cookies });
+  const { data: projects }: any = await supabase
+    .from("project")
+    .select("*")
+    .order("id", { ascending: false });
+
   return (
     <>
       <div className="mb-10 lg:mb-40">
@@ -15,16 +25,19 @@ export default async function ProjectComponent() {
             actually, my project from my company and side project."
         />
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-1">
-          {projects?.slice(0, 3)?.map((item) => (
-            <ProjectItem
-              key={item.id}
-              description={item.description}
-              image={item.image}
-              projectUrl={item.projectUrl}
-              techStacks={item.techStacks}
-              title={item.title}
-            />
-          ))}
+          {projects &&
+            projects
+              ?.slice(0, 3)
+              ?.map((item: any) => (
+                <ProjectItem
+                  key={item.id}
+                  description={item.description}
+                  image={item.image}
+                  projectUrl={item.projectUrl}
+                  techStacks={item.techStacks}
+                  title={item.title}
+                />
+              ))}
         </div>
 
         <div className="flex items-center justify-center">

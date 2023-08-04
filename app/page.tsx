@@ -4,14 +4,15 @@ import BlogComponent from "./components/Blog";
 import ContactComponent from "./components/Contact";
 import ProjectComponent from "./components/Project";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Intro />
+
       <Work />
       <ProjectComponent />
       <BlogComponent />
-      <ContactComponent />
+      {/* <ContactComponent /> */}
     </>
   );
 }
