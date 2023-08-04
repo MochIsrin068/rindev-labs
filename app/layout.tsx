@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProgressBar from "./components/ProgressBar";
 
+export const dynamic = "force-dynamic";
+
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata = {
