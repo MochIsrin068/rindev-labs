@@ -10,16 +10,18 @@ type TPropsWorkItem = {
     picture: string;
   };
   description: string;
-  responsibilities: Array<string>;
+  id: any;
   workDate: string;
+  responsibilities: Array<any>;
 };
 
 export default function WorkItem({
   company,
   description,
-  responsibilities,
+  id,
   position,
   workDate,
+  responsibilities,
 }: TPropsWorkItem) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -127,15 +129,15 @@ export default function WorkItem({
                 className="mt-4 lg:mt-8 bg-[#0a0913] p-4 rounded-2xl border border-[#1a1730]"
               >
                 <motion.ul className="list-disc ml-7">
-                  {responsibilities.map((item: string, index) => (
+                  {responsibilities.map((item: any) => (
                     <motion.li
-                      key={index}
+                      key={item?.id}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
                       className="mb-2 text-xs lg:text-lg"
                     >
-                      {item}
+                      {item?.name}
                     </motion.li>
                   ))}
                 </motion.ul>
