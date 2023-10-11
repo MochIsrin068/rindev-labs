@@ -78,16 +78,15 @@ export default function Intro() {
             customClass="flex-wrap w-full lg:w-3/4"
           />
         </motion.div>
-        <motion.a
-          href={CV_URL}
-          target="__blank"
+        <motion.button
+          onClick={() => window.open(`${CV_URL || "https://tinyurl.com/isrim-resume"}`, "__blank")}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1 }}
           className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold py-2 lg:py-3 px-3 lg:px-6 rounded shadow-md text-xs lg:text-sm my-1"
         >
           Download CV / Resume
-        </motion.a>
+        </motion.button>
         <motion.svg className="lg:w-[140px] lg:h-[80px]">
           <motion.path
             d="M0 40 C 15 52, 30 28, 45 40 S 60 52, 75 40 S 90 28, 105 40 S 120 52, 135 40"

@@ -56,14 +56,14 @@ export default function WrapperAnimatePresence({
         ))}
         <AnimatePresence>
           {selectedItem && (
-            <motion.div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-[#0d0e18db] z-50">
+            <motion.div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-[#0d0e18db] z-50 h-[110vh] lg:h-[124vh]">
               <motion.div
                 layoutId={selectedItem?.id}
                 key={selectedItem?.id}
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
                 exit={{ opacity: 0 }}
-                className="project-item p-3 lg:p-5 border border-[#131647] max-w-[90%] lg:max-h-[700px] lg:max-w-[800px]"
+                className="project-item p-3 lg:p-5 border border-[#131647] max-w-[90%] lg:max-h-[700px] lg:max-w-[800px] -mt-8 lg:-mt-36"
                 style={{
                   borderRadius: 8,
                 }}
