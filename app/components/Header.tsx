@@ -64,6 +64,7 @@ export default function Header() {
           <motion.div className="flex justify-between w-full">
             <motion.h2
               className={`cursor-pointer text-md lg:text-xl font-bold text-white mt-2 lg:mt-0`}
+              onClick={() => setIsMenuOpened(false)}
             >
               <Link href="/">
                 {"<Rindev"}
