@@ -60,3 +60,13 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
+
+.intro-blob {
+  fill: var(--first-color);
+}
+
+.intro-blob-img {
+  width: 478px;
+  -webkit-filter: invert(-100%); /* Safari/Chrome */
+  filter: invert(-100%);
+}

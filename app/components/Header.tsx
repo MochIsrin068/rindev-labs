@@ -60,7 +60,7 @@ export default function Header() {
           ${isMenuOpened ? '!bg-black !duration-200 !opacity-90' : ''}
         `}
       >
-        <motion.div className="flex justify-between w-full px-5 lg:px-0 lg:w-3/5 py-3 lg:py-10 flex-col lg:flex-row">
+        <motion.div className="flex justify-between w-full px-5 lg:px-0 lg:w-3/4 py-3 lg:py-10 flex-col lg:flex-row">
           <motion.div className="flex justify-between w-full">
             <motion.h2
               className={`cursor-pointer text-md lg:text-xl font-bold text-white mt-2 lg:mt-0`}
