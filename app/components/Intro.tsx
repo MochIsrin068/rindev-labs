@@ -82,7 +82,7 @@ export default function Intro() {
           <motion.button
             onClick={() =>
               window.open(
-                `${CV_URL || "https://tinyurl.com/isrim-resume"}`,
+                `${CV_URL || "https://tinyurl.com/isrim-cv-2024"}`,
                 "__blank"
               )
             }
