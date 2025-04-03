@@ -3,6 +3,7 @@ import AnimatedTextWord from "./AnimatedTextWord";
 import ReactTypingEffect from "react-typing-effect";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
+import LetterGlitch from "./LetterGlitch";
 
 export default function Intro() {
   const controls = useAnimation();
@@ -33,7 +34,7 @@ export default function Intro() {
 
   return (
     <>
-      <motion.div className="flex justify-between items-start mt-24 lg:mt-48 relative">
+      <motion.div className="flex justify-between items-center mt-24 lg:mt-56 relative">
         <motion.div
           className="w-full lg:w-3/4
        flex flex-col items-start justify-start -mb-16 lg:mb-0"
@@ -46,7 +47,7 @@ export default function Intro() {
             <motion.h1
               className={`text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-100 to-blue-400`}
             >
-              Muhammad Isrim 
+              Muhammad Isrim
             </motion.h1>
           </motion.div>
           <motion.div
@@ -114,7 +115,15 @@ export default function Intro() {
             />
           </motion.svg>
         </motion.div>
-        <motion.div
+        <div className="w-[630px] h-[380px] rounded-xl hidden md:block">
+          <LetterGlitch
+            glitchSpeed={50}
+            centerVignette={true}
+            outerVignette={true}
+            smooth={true}
+          />
+        </div>
+        {/* <motion.div
           className="drop-shadow-mondewhite hover:drop-shadow-mondeblue hidden lg:block lg:absolute right-0 w-80
           "
           initial={{ opacity: 0, x: 50 }}
@@ -135,7 +144,7 @@ export default function Intro() {
               <image className="intro-blob-img" href="/images/author.png" />
             </g>
           </svg>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </>
   );

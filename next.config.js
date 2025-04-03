@@ -9,8 +9,15 @@ const nextConfig = {
         port: "",
         pathname: "/dj0mbpsar/image/upload/**",
       },
+      {
+        protocol: "https",
+        hostname: "assets.vercel.com",
+        port: "",
+        pathname: "/image/upload/contentful/image/**",
+      },
     ],
   },
+  transpilePackages: ['three'],
 };
 
 module.exports = nextConfig;
